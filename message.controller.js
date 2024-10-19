@@ -4,17 +4,19 @@ const mongoose = require("mongoose");
 const { Contact } = require("./contact.model");
 require("dotenv").config();
 
-// const contacts = [919175763384, 919175763384, 919175763384];
-
 const sendMessage = async (req, res) => {
 	try {
-		const { message } = req.body;
+		const { message, contacts } = req.body;
 
 		// Fetch all contacts from MongoDB
-		const contacts = await Contact.find();
-		console.log(`${contacts.length} contacts fetched`);
+		// const contacts = await Contact.find();
+		// console.log(`${contacts.length} contacts fetched`);
 
 		// Loop through contacts and send messages
+
+		if (!message && contacts.length == 0)
+			return res.status(404).json("Please send the required data");
+
 		for (const contact of contacts) {
 			let data = {
 				message: message,
@@ -37,7 +39,6 @@ const sendMessage = async (req, res) => {
 
 		return res.status(200).json("message sent successfylly");
 	} catch (error) {
-		console.error("Error in sending bulk messages:", error.message);
 		return res.status(500).json("Error sending message");
 	}
 };
@@ -45,12 +46,13 @@ const sendMessage = async (req, res) => {
 // Main function to fetch contacts and send messages
 const sendMediaMessage = async (req, res) => {
 	try {
-		const { caption, imageUrl } = req.body;
+		const { caption, imageUrl, contacts } = req.body;
 
-		console.log(req.body);
+		if (!message || !caption || contacts.length == 0)
+			return res.status(404).json("Please send the required data");
 
 		// Fetch all contacts from MongoDB
-		const contacts = await Contact.find();
+		// const contacts = await Contact.find();
 		// console.log(`${contacts.length} contacts fetched`);
 
 		// Loop through contacts and send messages
@@ -76,7 +78,6 @@ const sendMediaMessage = async (req, res) => {
 
 		return res.status(200).json("message sent successfylly");
 	} catch (error) {
-		console.error("Error in sending bulk messages:", error.message);
 		return res.status(500).json("Error sending message");
 	}
 };

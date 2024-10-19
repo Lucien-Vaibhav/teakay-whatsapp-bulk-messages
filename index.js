@@ -19,18 +19,18 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection function
-async function connectDB() {
-	try {
-		await mongoose.connect(process.env.MONGO_URI); // No need for useNewUrlParser and useUnifiedTopology
-		console.log("Connected to MongoDB");
-	} catch (error) {
-		console.error("Error connecting to MongoDB:", error.message);
-		process.exit(1); // Exit the process if MongoDB connection fails
-	}
-}
+// async function connectDB() {
+// 	try {
+// 		await mongoose.connect(process.env.MONGO_URI); // No need for useNewUrlParser and useUnifiedTopology
+// 		console.log("Connected to MongoDB");
+// 	} catch (error) {
+// 		console.error("Error connecting to MongoDB:", error.message);
+// 		process.exit(1); // Exit the process if MongoDB connection fails
+// 	}
+// }
 
-// Call the MongoDB connection function
-connectDB();
+// // Call the MongoDB connection function
+// connectDB();
 
 // Endpoint to trigger sending bulk messages
 app.post("/send-messages", sendMessage);
