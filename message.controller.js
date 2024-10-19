@@ -39,7 +39,10 @@ const sendMessage = async (req, res) => {
 
 		return res.status(200).json("message sent successfylly");
 	} catch (error) {
-		return res.status(500).json("Error sending message");
+		console.log(error);
+		return res
+			.status(500)
+			.json({ messaage: "Error sending message", error: error.message });
 	}
 };
 
@@ -78,6 +81,10 @@ const sendMediaMessage = async (req, res) => {
 
 		return res.status(200).json("message sent successfylly");
 	} catch (error) {
+		console.log(error);
+		return res
+			.status(500)
+			.json({ messaage: "Error sending message", error: error.message });
 		return res.status(500).json("Error sending message");
 	}
 };
