@@ -30,8 +30,7 @@ const sendMessage = async (req, res) => {
 					headers: {
 						accept: "application/json",
 						"content-type": "application/json",
-						authorization:
-							"Bearer tI7MX6tiosFdrPIp8SvaSxDV5uTbwGPSGx5ULQpFafcb5c8a",
+						authorization: `Bearer ${process.env.WAAPI_TOKEN}`,
 					},
 				}
 			);
@@ -72,8 +71,7 @@ const sendMediaMessage = async (req, res) => {
 					headers: {
 						accept: "application/json",
 						"content-type": "application/json",
-						authorization:
-							"Bearer tI7MX6tiosFdrPIp8SvaSxDV5uTbwGPSGx5ULQpFafcb5c8a",
+						authorization: `Bearer ${process.env.WAAPI_TOKEN}`,
 					},
 				}
 			);
