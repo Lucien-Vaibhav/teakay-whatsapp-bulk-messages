@@ -20,7 +20,7 @@ const sendMessage = async (req, res) => {
 		for (const contact of contacts) {
 			let data = {
 				message: message,
-				chatId: `${contact.phone}@c.us`,
+				chatId: `${contact.phone}`,
 			};
 
 			const response = await axios.post(
@@ -62,7 +62,7 @@ const sendMediaMessage = async (req, res) => {
 		for (const contact of contacts) {
 			let data = {
 				mediaUrl: imageUrl,
-				chatId: `${contact.phone}@c.us`,
+				chatId: `${contact.phone}`,
 				mediaCaption: caption,
 			};
 			const response = await axios.post(
